@@ -3,37 +3,32 @@ import cors from "cors";
 import { connectDB } from "./Config/db.js";
 import foodRouter from "./Routes/FoodRoutes.js";
 import userRouter from "./Routes/UserRoute.js";
-import 'dotenv/config.js'
+import 'dotenv/config.js';
 import cartRouter from "./Routes/CartRoute.js";
 import orderRouter from "./Routes/orderRoute.js";
 
-//app congig
+// app config
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000; // 🔹 Render अपना PORT देगा
 
-//middleware
+// middleware
 app.use(express.json());
 app.use(cors());
 
+// db Connection (MONGO_URI env से आएगा)
+connectDB(process.env.MONGO_URI);
 
-//db Connection
-connectDB();
-
-//api endpoints
-app.use("/api/food",foodRouter);
-app.use("/images",express.static('uploads'))
-app.use("/api/user",userRouter)
-app.use("/api/cart",cartRouter)
-app.use("/api/order",orderRouter)
-
-
+// api endpoints
+app.use("/api/food", foodRouter);
+app.use("/images", express.static("uploads"));
+app.use("/api/user", userRouter);
+app.use("/api/cart", cartRouter);
+app.use("/api/order", orderRouter);
 
 app.get("/", (req, res) => {
-  res.send("API Working");
+  res.send("API Working 🚀");
 });
 
 app.listen(port, () => {
-  console.log(`Server Started on http://localhost:${port}`);
+  console.log(`✅ Server Started on port ${port}`);
 });
-
-//mongodb+srv://Visu2250:1572532@cluster0.g5cv7y5.mongodb.net/?
