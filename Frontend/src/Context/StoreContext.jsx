@@ -4,7 +4,7 @@ import axios from "axios";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-  const url = "http://localhost:4000"; // 🔹 Apne backend ka URL yaha dalna
+  const url = "https://food-order-backend-ibl0.onrender.com"; // 🔹 Apne backend ka URL yaha dalna
   const [cartItems, setCartItems] = useState({});
   const [token, setToken] = useState("");
   const [food_list, setFoodList] = useState([]);
