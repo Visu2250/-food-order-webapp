@@ -10,8 +10,6 @@ const StoreContextProvider = (props) => {
   const [food_list, setFoodList] = useState([]);
 
 
-  //Frontend se fooddata lena
-  import { foodData } from '../assets/assets.js';
 
   // ----------------------------
   // 🟢 Load Cart Data from Backend
@@ -110,29 +108,19 @@ const StoreContextProvider = (props) => {
   // ----------------------------
   // 🟢 Fetch Food List from Backend
   // ----------------------------
-  // const fetchFoodList = async () => {
-  //   try {
-  //     const response = await axios.get(url + "/api/food/list");
-  //     if (response.data.success) {
-  //       setFoodList(response.data.data);
-  //     }
-  //   } catch (error) {
-  //     console.log("fetchFoodList error:", error);
-  //   }
-  // };
+  const fetchFoodList = async () => {
+    try {
+      const response = await axios.get(url + "/api/food/list");
+      if (response.data.success) {
+        setFoodList(response.data.data);
+      }
+    } catch (error) {
+      console.log("fetchFoodList error:", error);
+    }
+  };
 
 
-  // Frontend asset se fooddata lena
-  useEffect(() => {
-  // load food data from local assets
-  setFoodList(foodData);
 
-  const savedToken = localStorage.getItem("token");
-  if (savedToken) {
-    setToken(savedToken);
-    loadCartData(savedToken);
-  }
-}, []);
 
   // ----------------------------
   // 🟢 On Component Mount
