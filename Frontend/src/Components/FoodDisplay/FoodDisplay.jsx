@@ -44,7 +44,9 @@ const FoodDisplay = ({ category }) => {
                 name={item.name}
                 description={item.description}
                 price={item.price}
-                image={`${url}/images/${item.image}`}   // ✅ yaha fix
+                {/* image={`${url}/images/${item.image}`}   // ✅ yaha fix */}
+                  image={item.image}
+
               />
             );
           }
